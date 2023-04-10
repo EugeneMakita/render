@@ -1,9 +1,8 @@
 services:
   - type: web
     name: my-flask-app
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python app.py"
+    env: docker
+    buildCommand: "docker build -t my-flask-app ."
+    startCommand: "./deploy.sh && docker run -p 8080:8080 my-flask-app"
     healthCheckPath: "/"
     port: 8080
-
