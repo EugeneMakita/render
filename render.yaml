@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: flask-app
+    env: docker
+    buildCommand: docker build -t flask-app .
+    startCommand: docker run -p 8080:8080 flask-app
+    healthCheckPath: /
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: 1
